@@ -25,13 +25,14 @@ public class base {
             e.printStackTrace();
         }
     }
-    public static AndroidDriver LaunchApp() throws MalformedURLException {
+    public static void LaunchApp() throws MalformedURLException {
         DesiredCapabilities cap=new DesiredCapabilities();
         cap.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9");
         //cap.setCapability("chromedriverExecutable", "/usr/local/bin/chromedriver");
         //cap.setCapability(MobileCapabilityType.BROWSER_NAME,"Chrome");
         cap.setCapability("unicodeKeyboard", true);
+        cap.setCapability("resetKeyboard", true);
         cap.setCapability("appPackage", "com.ebo.b2b.android");
         cap.setCapability("appActivity", "com.ebo.mart.ui.views.homepage.activity.HomeMainActivity");
         cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus_5X_API_28");
@@ -39,8 +40,6 @@ public class base {
         cap.setCapability(MobileCapabilityType.APP,"/Users/thanisha/Documents/340dc220-185f-4373-a109-c62a75d1b79c.apk");
         cap.setCapability(MobileCapabilityType.AUTOMATION_NAME,AutomationName.ANDROID_UIAUTOMATOR2);
         driver=new AndroidDriver<AndroidElement>(new URL("http://0.0.0.0:4724/wd/hub"),cap);
-        driver.findElementById("com.ebo.b2b.android:id/editTextSearch").sendKeys("Floor");
-        return driver;
     }
 
 }
